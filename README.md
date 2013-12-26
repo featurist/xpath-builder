@@ -38,10 +38,10 @@ MyXPaths.prototype.passwordField = function(id) {
 ```
 
 Both ways return an
-[`Expression`](.src/expression.pogo)
+[`Expression`](./src/expression.pogo)
 instance, which can be further modified.  To convert the expression to a
 string, just call `.toString()` on it. All available expressions are defined in
-[`DSL`](./stc/dsl.pogo).
+[`DSL`](./src/dsl.pogo).
 
 ## Strings and Literals
 
