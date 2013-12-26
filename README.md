@@ -27,7 +27,7 @@ function MyXPaths() {}
 MyXPaths.prototype = require('xpath-builder').dsl();
 
 MyXPaths.prototype.fooList = function() {
-  return this.descendant('ul').where(this.attr('id).equals('foo'));
+  return this.descendant('ul').where(this.attr('id').equals('foo'));
 };
 
 MyXPaths.prototype.passwordField = function(id) {
@@ -77,6 +77,7 @@ This expression would match any p tag whose id attribute matches a 'foo' tag it 
 (The MIT License)
 
 Copyright © 2013 Josh Chisholm
+
 Copyright © 2010 Jonas Nicklas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
