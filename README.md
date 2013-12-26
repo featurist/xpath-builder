@@ -54,7 +54,7 @@ x.descendant('p').where(x.attr('id').equals('foo'))
 Which generates:
 
 ```
-.//p[./@id='foo']
+.//p[./@id = 'foo']
 ```
 
 Occasionally you might want XPath literals instead of string literals, in which case wrap your string in a call to .literal():
@@ -66,7 +66,7 @@ x.descendant('p').where(x.attr('id').equals(x.literal('foo')))
 Which generates:
 
 ```
-.//p[@id = foo]
+.//p[./@id = foo]
 ```
 
 This expression would match any p tag whose id attribute matches a 'foo' tag it contains. Most of the time, this is not what you want.
