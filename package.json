@@ -1,0 +1,23 @@
+{
+  "name": "xpath-builder",
+  "version": "0.0.1",
+  "description": "DSL for building complex XPath expressions",
+  "main": "js/dsl.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "pogo": "~0.6.4",
+    "mocha": "~1.16.2",
+    "should": "~2.1.1",
+    "xpath": "0.0.5",
+    "xmldom": "~0.1.17",
+    "cheerio": "~0.12.4"
+  }
+}
