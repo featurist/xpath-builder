@@ -140,7 +140,7 @@ Renderer.prototype = {
     string function (current) =
         "string(#(current))"
 
-    substring function (current, args, ...) =
+    substring function (current, args) =
         "substring(#(current), #(args.join(', ')))"
 
     concat function (args) =

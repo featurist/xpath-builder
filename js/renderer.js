@@ -202,9 +202,8 @@
             var self = this;
             return "string(" + current + ")";
         },
-        substringFunction: function(current) {
+        substringFunction: function(current, args) {
             var self = this;
-            var args = Array.prototype.slice.call(arguments, 1, arguments.length);
             return "substring(" + current + ", " + args.join(", ") + ")";
         },
         concatFunction: function(args) {
