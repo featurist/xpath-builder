@@ -155,6 +155,9 @@ Renderer.prototype = {
     count function (current) =
         "count(#(current))"
 
+    nth child (current, n) =
+        "#(current)[count(preceding-sibling::*) = #(n - 1)]"
+
 }
 
 Renderer.render (node, type) =

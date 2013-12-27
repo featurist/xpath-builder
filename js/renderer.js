@@ -221,6 +221,10 @@
         countFunction: function(current) {
             var self = this;
             return "count(" + current + ")";
+        },
+        nthChild: function(current, n) {
+            var self = this;
+            return current + "[count(preceding-sibling::*) = " + (n - 1) + "]";
         }
     };
     Renderer.render = function(node, type) {

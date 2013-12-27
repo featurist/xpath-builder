@@ -148,6 +148,12 @@ describe 'dsl'
             results = select(dsl.descendant('div').where(dsl.child().count().equals(2)))
             results.0.attr('id').should.equal "preference"
 
+    describe '.nthChild()'
+
+        it "finds the nth child element"
+            results = select(dsl.descendant('div').nthChild(3))
+            results.0.attr('id').should.equal "foo"
+
     describe '.startsWith()'
 
         it "finds nodes that begin with the given string"

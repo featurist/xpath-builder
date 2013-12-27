@@ -146,6 +146,10 @@
         count: function() {
             var self = this;
             return new Expression("countFunction", self.current());
+        },
+        nthChild: function(n) {
+            var self = this;
+            return new Expression("nthChild", self.current(), n);
         }
     };
     literals = function(items) {

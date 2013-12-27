@@ -105,6 +105,9 @@ expression level methods = {
     count () =
         @new Expression ('countFunction', self.current())
 
+    nth child (n) =
+        @new Expression ('nthChild', self.current(), n)
+
 }
 
 literals (items) = items.map @(item) @{ @new Literal(item) }
