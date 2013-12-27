@@ -1,6 +1,6 @@
 {
   "name": "xpath-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "DSL for building complex XPath expressions",
   "main": "js/dsl.js",
   "directories": {
@@ -9,8 +9,10 @@
   "scripts": {
     "test": "make test"
   },
-  "author": "",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/featurist/xpath-builder.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "pogo": "~0.6.4",
@@ -19,5 +21,14 @@
     "xpath": "0.0.5",
     "xmldom": "~0.1.17",
     "cheerio": "~0.12.4"
-  }
+  },
+  "keywords": [
+    "http"
+  ],
+  "author": {
+    "name": "Josh Chisholm",
+    "email": "joshchisholm@gmail.com",
+    "url": "http://featurist.co.uk/"
+  },
+  "license": "MIT"
 }
