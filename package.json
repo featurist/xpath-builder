@@ -23,7 +23,8 @@
     "cheerio": "~0.12.4"
   },
   "keywords": [
-    "http"
+    "xpath",
+    "builder"
   ],
   "author": {
     "name": "Josh Chisholm",
