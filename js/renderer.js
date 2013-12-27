@@ -199,9 +199,8 @@
             var args = Array.prototype.slice.call(arguments, 1, arguments.length);
             return "substring(" + current + ", " + args.join(", ") + ")";
         },
-        concatFunction: function() {
+        concatFunction: function(args) {
             var self = this;
-            var args = Array.prototype.slice.call(arguments, 0, arguments.length);
             return "concat(" + args.join(", ") + ")";
         },
         stringLengthFunction: function(current) {
