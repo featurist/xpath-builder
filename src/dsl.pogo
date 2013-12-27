@@ -102,6 +102,9 @@ expression level methods = {
     subtract (number) =
         @new Expression('subtraction', self.current(), number)
 
+    count () =
+        @new Expression ('countFunction', self.current())
+
 }
 
 literals (items) = items.map @(item) @{ @new Literal(item) }

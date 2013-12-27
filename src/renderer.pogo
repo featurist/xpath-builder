@@ -152,6 +152,9 @@ Renderer.prototype = {
     string length function (current) =
         "string-length(#(current))"
 
+    count function (current) =
+        "count(#(current))"
+
 }
 
 Renderer.render (node, type) =

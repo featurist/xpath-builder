@@ -142,6 +142,10 @@
         subtract: function(number) {
             var self = this;
             return new Expression("subtraction", self.current(), number);
+        },
+        count: function() {
+            var self = this;
+            return new Expression("countFunction", self.current());
         }
     };
     literals = function(items) {

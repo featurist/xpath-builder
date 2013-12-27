@@ -217,6 +217,10 @@
         stringLengthFunction: function(current) {
             var self = this;
             return "string-length(" + current + ")";
+        },
+        countFunction: function(current) {
+            var self = this;
+            return "count(" + current + ")";
         }
     };
     Renderer.render = function(node, type) {

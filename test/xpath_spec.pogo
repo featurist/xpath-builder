@@ -142,6 +142,12 @@ describe 'dsl'
             results = select(dsl.descendant('div').where(dsl.attr('title').equals(dsl.concat(foo, 'Div'))))
             results.0.attr('id').should.equal "foo"
 
+    describe '.count()'
+
+        it "counts elements"
+            results = select(dsl.descendant('div').where(dsl.child().count().equals(2)))
+            results.0.attr('id').should.equal "preference"
+
     describe '.startsWith()'
 
         it "finds nodes that begin with the given string"
