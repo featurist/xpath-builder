@@ -135,6 +135,13 @@ describe 'dsl'
             results = select(dsl.descendant('div').where(dsl.attr('title').contains(expression)))
             results.0.attr('id').should.equal "foo"
 
+    describe '.concat()'
+
+        it "concatenates expressions"
+            foo = dsl.anywhere('div').where(dsl.attr('title').equals 'fooDiv').attr('id')
+            results = select(dsl.descendant('div').where(dsl.attr('title').equals(dsl.concat(foo, 'Div'))))
+            results.0.attr('id').should.equal "foo"
+
     describe '.startsWith()'
 
         it "finds nodes that begin with the given string"

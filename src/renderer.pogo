@@ -137,6 +137,9 @@ Renderer.prototype = {
     substring function (current, args, ...) =
         "substring(#(current), #(args.join(', ')))"
 
+    concat function (args, ...) =
+        "concat(#(args.join(', ')))"
+
     string length function (current) =
         "string-length(#(current))"
 

@@ -77,6 +77,11 @@
         literal: function(string) {
             var self = this;
             return new Literal(string);
+        },
+        concat: function() {
+            var self = this;
+            var expressions = Array.prototype.slice.call(arguments, 0, arguments.length);
+            return new Expression("concatFunction", expressions);
         }
     };
     expressionLevelMethods = {

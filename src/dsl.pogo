@@ -53,6 +53,9 @@ top level methods = {
     literal (string) =
         @new Literal(string)
 
+    concat (expressions, ...) =
+        @new Expression ('concatFunction', expressions)
+
 }
 
 expression level methods = {
