@@ -36,6 +36,9 @@ top level methods = {
     starts with (expression) =
         @new Expression ('startsWith', self.current(), expression)
 
+    ends with (expression) =
+        @new Expression ('endsWith', self.current(), expression)
+
     text () =
         @new Expression ('text', self.current())
 

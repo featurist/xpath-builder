@@ -53,6 +53,10 @@
             var self = this;
             return new Expression("startsWith", self.current(), expression);
         },
+        endsWith: function(expression) {
+            var self = this;
+            return new Expression("endsWith", self.current(), expression);
+        },
         text: function() {
             var self = this;
             return new Expression("text", self.current());

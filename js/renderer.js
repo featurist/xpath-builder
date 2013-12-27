@@ -152,6 +152,10 @@
             var self = this;
             return "starts-with(" + current + ", " + value + ")";
         },
+        endsWith: function(current, value) {
+            var self = this;
+            return "substring(" + current + ", string-length(" + current + ") - string-length(" + value + ") + 1, string-length(" + current + ")) = " + value;
+        },
         and: function(one, two) {
             var self = this;
             return "(" + one + " and " + two + ")";

@@ -107,6 +107,9 @@ Renderer.prototype = {
     starts with (current, value) =
         "starts-with(#(current), #(value))"
 
+    ends with (current, value) =
+        "substring(#(current), string-length(#(current)) - string-length(#(value)) + 1, string-length(#(current))) = #(value)"
+
     and (one, two) =
         "(#(one) and #(two))"
 

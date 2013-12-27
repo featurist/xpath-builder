@@ -150,10 +150,25 @@ describe 'dsl'
             results.0.attr('id').should.equal "foo"
             results.1.attr('id').should.equal "fooDiv"
 
-        it "finds nodes that contain the given expression"
+        it "finds nodes that start with the given expression"
             expression = dsl.anywhere('div').where(dsl.attr('title').equals 'fooDiv').attr('id')
             results = select(dsl.descendant('div').where(dsl.attr('title').starts with(expression)))
             results.0.attr('id').should.equal "foo"
+
+    describe '.endsWith()'
+
+        it "finds nodes that end with the given string"
+            results = select(dsl.descendant('*').where(dsl.attr('title').ends with('ooDiv')))
+            results.length.should.equal 2
+            results.0.attr('id').should.equal "foo"
+            results.1.attr('id').should.equal "woo"
+
+        it "finds nodes that end with the given expression"
+            expression = dsl.concat('ooD', 'iv')
+            results = select(dsl.descendant('*').where(dsl.attr('title').ends with(expression)))
+            results.length.should.equal 2
+            results.0.attr('id').should.equal "foo"
+            results.1.attr('id').should.equal "woo"
 
     describe '.text()'
 
