@@ -199,6 +199,16 @@ describe 'dsl'
         it "limits the expression to find only certain nodes"
             select(dsl.descendant('div').where(dsl.attr('id').equals('foo'))).0.attr('title').should.equal "fooDiv"
 
+    describe '.add()'
+
+        it "adds numbers together"
+            select(dsl.descendant().where(dsl.string length(dsl.attr('title')).add(1).equals(7))).0.attr('title').should.equal "barDiv"
+
+    describe '.subtract()'
+
+        it "subtracts a number"
+            select(dsl.descendant().where(dsl.string length(dsl.attr('title')).subtract(1).equals(5))).0.attr('title').should.equal "barDiv"
+
     describe '.is()'
 
         it "uses equality when 'exact' is given"

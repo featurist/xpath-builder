@@ -130,6 +130,14 @@
         n: function() {
             var self = this;
             return self.normalize();
+        },
+        add: function(number) {
+            var self = this;
+            return new Expression("addition", self.current(), number);
+        },
+        subtract: function(number) {
+            var self = this;
+            return new Expression("subtraction", self.current(), number);
         }
     };
     literals = function(items) {

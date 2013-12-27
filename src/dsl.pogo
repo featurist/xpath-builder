@@ -93,6 +93,12 @@ expression level methods = {
     n () =
         self.normalize()
 
+    add (number) =
+        @new Expression('addition', self.current(), number)
+
+    subtract (number) =
+        @new Expression('subtraction', self.current(), number)
+
 }
 
 literals (items) = items.map @(item) @{ @new Literal(item) }

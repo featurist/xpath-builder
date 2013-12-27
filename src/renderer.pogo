@@ -65,6 +65,12 @@ Renderer.prototype = {
     equality (one, two) =
         "#(one) = #(two)"
 
+    addition (one, two) =
+        "#(one) + #(two)"
+
+    subtraction (one, two) =
+        "#(one) - #(two)"
+
     is (one, two) =
         if (self.type == 'exact')
             self.equality (one, two)

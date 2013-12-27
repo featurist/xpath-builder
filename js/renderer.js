@@ -93,6 +93,14 @@
             var self = this;
             return one + " = " + two;
         },
+        addition: function(one, two) {
+            var self = this;
+            return one + " + " + two;
+        },
+        subtraction: function(one, two) {
+            var self = this;
+            return one + " - " + two;
+        },
         is: function(one, two) {
             var self = this;
             if (self.type === "exact") {
