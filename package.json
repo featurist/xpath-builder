@@ -1,6 +1,6 @@
 {
   "name": "xpath-builder",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "DSL for building complex XPath expressions",
   "main": "js/dsl.js",
   "directories": {

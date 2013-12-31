@@ -14,7 +14,8 @@ describe 'dsl'
     doc = @new dom().parse from string(template.to string())
 
     select (expression, type) =
-        selected = xpath.select(expression.to XPath(type), doc)
+        x = expression.to XPath(type)
+        selected = xpath.select(x, doc)
         if (selected :: Array)
             (selected.map @(el)
                 $ = cheerio(el.to string())
@@ -151,7 +152,7 @@ describe 'dsl'
     describe '.nthChild()'
 
         it "finds the nth child element"
-            results = select(dsl.descendant('div').nthChild(3))
+            results = select(dsl.descendant('div').where(dsl.nthChild(3)))
             results.0.attr('id').should.equal "foo"
 
     describe '.startsWith()'

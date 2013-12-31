@@ -59,6 +59,9 @@ top level methods = {
     concat (expressions, ...) =
         @new Expression ('concatFunction', expressions)
 
+    nth child (n) =
+        @new Expression ('nthChild', n)
+
 }
 
 expression level methods = {
@@ -104,9 +107,6 @@ expression level methods = {
 
     count () =
         @new Expression ('countFunction', self.current())
-
-    nth child (n) =
-        @new Expression ('nthChild', self.current(), n)
 
 }
 

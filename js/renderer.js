@@ -222,9 +222,9 @@
             var self = this;
             return "count(" + current + ")";
         },
-        nthChild: function(current, n) {
+        nthChild: function(n) {
             var self = this;
-            return current + "[count(preceding-sibling::*) = " + (n - 1) + "]";
+            return "count(preceding-sibling::*) = " + (n - 1);
         }
     };
     Renderer.render = function(node, type) {

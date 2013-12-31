@@ -86,6 +86,10 @@
             var self = this;
             var expressions = Array.prototype.slice.call(arguments, 0, arguments.length);
             return new Expression("concatFunction", expressions);
+        },
+        nthChild: function(n) {
+            var self = this;
+            return new Expression("nthChild", n);
         }
     };
     expressionLevelMethods = {
@@ -146,10 +150,6 @@
         count: function() {
             var self = this;
             return new Expression("countFunction", self.current());
-        },
-        nthChild: function(n) {
-            var self = this;
-            return new Expression("nthChild", self.current(), n);
         }
     };
     literals = function(items) {
