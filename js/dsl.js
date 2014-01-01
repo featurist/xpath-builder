@@ -107,6 +107,10 @@
             var self = this;
             return new Expression("onlyChild");
         },
+        onlyOfType: function() {
+            var self = this;
+            return new Expression("onlyOfType");
+        },
         firstOfType: function() {
             var self = this;
             return new Expression("nthOfType", 1);

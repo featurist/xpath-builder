@@ -74,6 +74,9 @@ top level methods = {
     only child () =
         @new Expression ('onlyChild')
 
+    only of type () =
+        @new Expression ('onlyOfType')
+
     first of type () =
         @new Expression ('nthOfType', 1)
 

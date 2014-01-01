@@ -253,6 +253,10 @@
         onlyChild: function() {
             var self = this;
             return "count(preceding-sibling::*) = 0 and count(following-sibling::*) = 0";
+        },
+        onlyOfType: function() {
+            var self = this;
+            return "last() = 1";
         }
     };
     Renderer.render = function(node, type) {

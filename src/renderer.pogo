@@ -178,6 +178,10 @@ Renderer.prototype = {
 
     only child () =
         "count(preceding-sibling::*) = 0 and count(following-sibling::*) = 0"
+
+    only of type () =
+        "last() = 1"
+
 }
 
 Renderer.render (node, type) =

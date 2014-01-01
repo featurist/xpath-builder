@@ -172,6 +172,13 @@ describe 'dsl'
             results = select(dsl.descendant().where(dsl.only child()))
             results.0.name.should.equal 'li'
 
+    describe '.onlyOfType()'
+
+        it "finds the only element of the given type"
+            woo = dsl.descendant().where(dsl.attr('id').equals('woo'))
+            results = select(woo.descendant('li').where(dsl.only of type()))
+            results.0.name.should.equal 'li'
+
     describe '.startsWith()'
 
         it "finds nodes that begin with the given string"
