@@ -1,5 +1,4 @@
-xpath = require('xpath')
-dom = require('xmldom').DOMParser
+libxmljs = require "libxmljs"
 dsl = require '../js/dsl'.dsl ()
 cheerio = require 'cheerio'
 
@@ -11,15 +10,15 @@ Thingy.prototype.fooDiv () =
 describe 'dsl'
 
     template = require('fs').read file sync "#(__dirname)/fixtures/simple.html"
-    doc = @new dom().parse from string(template.to string())
+    doc = libxmljs.parseXml(template.to string())
 
     select (expression, type) =
         x = expression.to XPath(type)
-        selected = xpath.select(x, doc)
+        selected = doc.find(expression.to XPath(type))
         if (selected :: Array)
             (selected.map @(el)
                 $ = cheerio(el.to string())
-                $.name = el.tagName
+                $.name = el.name()
                 $
             ) || []
         else
@@ -260,7 +259,6 @@ describe 'dsl'
             results.1.text().should.equal "Blah"
             results.2.attr('title').should.equal "bazDiv"
 
-
     describe '.and()'
 
         it "finds all nodes in both expressions"
@@ -302,3 +300,28 @@ describe 'dsl'
 
         it "embeds the string argument in the XPath without escaping anything"
             dsl.descendant().where(dsl.attr('x').equals(dsl.literal('foo'))).to XPath().should.equal('.//*[./@x = foo]')
+
+    describe '.firstOfType()'
+
+        it "selects the first element of the given type"
+            first p = select(dsl.descendant('p').where(dsl.firstOfType()))
+            first p.0.attr('id').should.equal 'fooDiv'
+
+    describe '.lastOfType()'
+
+        it "selects the last element of the given type"
+            first p = select(dsl.descendant('p').where(dsl.lastOfType()))
+            first p.0.attr('id').should.equal 'amingoflay'
+
+    describe '.nthOfType()'
+
+        it "selects the nth element of the given type"
+            nth = select(dsl.descendant('div').where(dsl.nthOfType(4)))
+            nth.length.should.equal 1
+            nth.0.attr('id').should.equal 'woo'
+
+    describe '.nthLastOfType()'
+
+        it "selects the nth last element of the given type"
+            second last p = select(dsl.descendant('p').where(dsl.nthLastOfType(2)))
+            second last p.0.attr('id').should.equal 'impchay'

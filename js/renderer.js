@@ -225,6 +225,18 @@
         nthChild: function(n) {
             var self = this;
             return "count(preceding-sibling::*) = " + (n - 1);
+        },
+        nthOfType: function(n) {
+            var self = this;
+            return "position() = " + n;
+        },
+        nthLastOfType: function(n) {
+            var self = this;
+            return "position() = last() - " + (n - 1);
+        },
+        lastOfType: function(n) {
+            var self = this;
+            return "position() = last()";
         }
     };
     Renderer.render = function(node, type) {

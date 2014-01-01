@@ -158,6 +158,15 @@ Renderer.prototype = {
     nth child (n) =
         "count(preceding-sibling::*) = #(n - 1)"
 
+    nth of type (n) =
+        "position() = #(n)"
+
+    nth last of type (n) =
+        "position() = last() - #(n - 1)"
+
+    last of type (n) =
+        "position() = last()"
+
 }
 
 Renderer.render (node, type) =

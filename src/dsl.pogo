@@ -59,8 +59,20 @@ top level methods = {
     concat (expressions, ...) =
         @new Expression ('concatFunction', expressions)
 
+    first of type () =
+        @new Expression ('nthOfType', 1)
+
+    last of type () =
+        @new Expression ('lastOfType')
+
     nth child (n) =
         @new Expression ('nthChild', n)
+
+    nth of type (n) =
+        @new Expression ('nthOfType', n)
+
+    nth last of type (n) =
+        @new Expression ('nthLastOfType', n)
 
 }
 

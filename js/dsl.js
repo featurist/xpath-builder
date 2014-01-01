@@ -87,9 +87,25 @@
             var expressions = Array.prototype.slice.call(arguments, 0, arguments.length);
             return new Expression("concatFunction", expressions);
         },
+        firstOfType: function() {
+            var self = this;
+            return new Expression("nthOfType", 1);
+        },
+        lastOfType: function() {
+            var self = this;
+            return new Expression("lastOfType");
+        },
         nthChild: function(n) {
             var self = this;
             return new Expression("nthChild", n);
+        },
+        nthOfType: function(n) {
+            var self = this;
+            return new Expression("nthOfType", n);
+        },
+        nthLastOfType: function(n) {
+            var self = this;
+            return new Expression("nthLastOfType", n);
         }
     };
     expressionLevelMethods = {
