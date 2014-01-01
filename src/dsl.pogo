@@ -89,6 +89,9 @@ top level methods = {
     nth last of type (n) =
         @new Expression ('nthLastOfType', n)
 
+    empty () =
+        @new Expression ('empty')
+
 }
 
 expression level methods = {

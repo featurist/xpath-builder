@@ -350,3 +350,9 @@ describe 'dsl'
         it "selects the nth last element of the given type"
             second last p = select(dsl.descendant('p').where(dsl.nthLastOfType(2)))
             second last p.0.attr('id').should.equal 'impchay'
+
+    describe '.empty()'
+
+        it "finds elements with no children"
+            with no children = select(dsl.descendant('*').where(dsl.empty()))
+            with no children.length.should.equal 3

@@ -257,6 +257,10 @@
         onlyOfType: function() {
             var self = this;
             return "last() = 1";
+        },
+        empty: function() {
+            var self = this;
+            return "not(node())";
         }
     };
     Renderer.render = function(node, type) {

@@ -182,6 +182,9 @@ Renderer.prototype = {
     only of type () =
         "last() = 1"
 
+    empty () =
+        "not(node())"
+
 }
 
 Renderer.render (node, type) =

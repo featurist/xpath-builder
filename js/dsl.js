@@ -126,6 +126,10 @@
         nthLastOfType: function(n) {
             var self = this;
             return new Expression("nthLastOfType", n);
+        },
+        empty: function() {
+            var self = this;
+            return new Expression("empty");
         }
     };
     expressionLevelMethods = {
