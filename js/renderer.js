@@ -222,10 +222,6 @@
             var self = this;
             return "count(" + current + ")";
         },
-        nthChild: function(n) {
-            var self = this;
-            return "count(preceding-sibling::*) = " + (n - 1);
-        },
         nthOfType: function(n) {
             var self = this;
             return "position() = " + n;
@@ -237,6 +233,22 @@
         lastOfType: function(n) {
             var self = this;
             return "position() = last()";
+        },
+        nthChild: function(n) {
+            var self = this;
+            return "count(preceding-sibling::*) = " + (n - 1);
+        },
+        nthLastChild: function(n) {
+            var self = this;
+            return "count(following-sibling::*) = " + (n - 1);
+        },
+        firstChild: function() {
+            var self = this;
+            return "count(preceding-sibling::*) = 0";
+        },
+        lastChild: function() {
+            var self = this;
+            return "count(following-sibling::*) = 0";
         }
     };
     Renderer.render = function(node, type) {

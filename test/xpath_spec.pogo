@@ -151,8 +151,20 @@ describe 'dsl'
     describe '.nthChild()'
 
         it "finds the nth child element"
-            results = select(dsl.descendant('div').where(dsl.nthChild(3)))
+            results = select(dsl.descendant('div').where(dsl.nth child(3)))
             results.0.attr('id').should.equal "foo"
+
+    describe '.nthLastChild()'
+
+        it "finds the nth last child element"
+            results = select(dsl.descendant('div').where(dsl.nth last child(3)))
+            results.0.attr('id').should.equal "moar"
+
+    describe '.firstChild()'
+
+        it "finds the first child element"
+            results = select(dsl.descendant('div').where(dsl.first child()))
+            results.0.attr('id').should.equal "bar"
 
     describe '.startsWith()'
 

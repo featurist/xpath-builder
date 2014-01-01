@@ -155,9 +155,6 @@ Renderer.prototype = {
     count function (current) =
         "count(#(current))"
 
-    nth child (n) =
-        "count(preceding-sibling::*) = #(n - 1)"
-
     nth of type (n) =
         "position() = #(n)"
 
@@ -167,6 +164,17 @@ Renderer.prototype = {
     last of type (n) =
         "position() = last()"
 
+    nth child (n) =
+        "count(preceding-sibling::*) = #(n - 1)"
+
+    nth last child (n) =
+        "count(following-sibling::*) = #(n - 1)"
+
+    first child () =
+        "count(preceding-sibling::*) = 0"
+
+    last child () =
+        "count(following-sibling::*) = 0"
 }
 
 Renderer.render (node, type) =
