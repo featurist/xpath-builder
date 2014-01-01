@@ -249,6 +249,10 @@
         lastChild: function() {
             var self = this;
             return "count(following-sibling::*) = 0";
+        },
+        onlyChild: function() {
+            var self = this;
+            return "count(preceding-sibling::*) = 0 and count(following-sibling::*) = 0";
         }
     };
     Renderer.render = function(node, type) {

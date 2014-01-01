@@ -175,6 +175,9 @@ Renderer.prototype = {
 
     last child () =
         "count(following-sibling::*) = 0"
+
+    only child () =
+        "count(preceding-sibling::*) = 0 and count(following-sibling::*) = 0"
 }
 
 Renderer.render (node, type) =

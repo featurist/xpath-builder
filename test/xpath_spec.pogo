@@ -166,6 +166,12 @@ describe 'dsl'
             results = select(dsl.descendant('div').where(dsl.first child()))
             results.0.attr('id').should.equal "bar"
 
+    describe '.onlyChild()'
+
+        it "finds the only child element"
+            results = select(dsl.descendant().where(dsl.only child()))
+            results.0.name.should.equal 'li'
+
     describe '.startsWith()'
 
         it "finds nodes that begin with the given string"
