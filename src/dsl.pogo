@@ -89,6 +89,24 @@ top level methods = {
     nth last of type (n) =
         @new Expression ('nthLastOfType', n)
 
+    nth of type mod (m, n) =
+        @new Expression ('nthOfTypeMod', m, n || 0)
+
+    nth of type odd () =
+        @new Expression ('nthOfTypeOdd')
+
+    nth of type even () =
+        @new Expression ('nthOfTypeEven')
+
+    nth last of type mod (m, n) =
+        @new Expression ('nthLastOfTypeMod', m, n || 0)
+
+    nth last of type odd () =
+        @new Expression ('nthLastOfTypeOdd')
+
+    nth last of type even () =
+        @new Expression ('nthLastOfTypeEven')
+
     empty () =
         @new Expression ('empty')
 

@@ -15,6 +15,8 @@ Renderer.prototype = {
             argument.map @(e) @{ self.convert argument(e) }
         else if (argument :: String)
             self.string literal (argument)
+        else if (argument :: Number)
+            argument
         else if (argument.is literal)
             argument.value
         else
@@ -158,10 +160,38 @@ Renderer.prototype = {
     nth of type (n) =
         "position() = #(n)"
 
+    nth of type mod (m, n) =
+        if (m == -1)
+            "(position() <= #(n)) and (((position() - #(n)) mod 1) = 0)"
+        else if (n > 0)
+            "(position() >= #(n)) and (((position() - #(n)) mod #(m)) = 0)"
+        else
+            "(position() mod #(m)) = 0"
+
+    nth of type odd () =
+        "(position() mod 2) = 1"
+
+    nth of type even () =
+        "(position() mod 2) = 0"
+
     nth last of type (n) =
         "position() = last() - #(n - 1)"
 
-    last of type (n) =
+    nth last of type mod (m, n) =
+        if (m == -1)
+            "((last() - position() + 1) <= #(n)) and ((((last() - position() + 1) - #(n)) mod 1) = 0)"
+        else if (n > 0)
+            "((last() - position() + 1) >= #(n)) and ((((last() - position() + 1) - #(n)) mod #(m)) = 0)"
+        else
+            "((last() - position() + 1) mod #(m)) = 0"
+
+    nth last of type odd () =
+        "((last() - position() + 1) >= 1) and ((((last() - position() + 1) - 1) mod 2) = 0)"
+
+    nth last of type even () =
+        "((last() - position() + 1) mod 2) = 0"
+
+    last of type () =
         "position() = last()"
 
     nth child (n) =

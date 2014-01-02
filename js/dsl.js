@@ -127,6 +127,30 @@
             var self = this;
             return new Expression("nthLastOfType", n);
         },
+        nthOfTypeMod: function(m, n) {
+            var self = this;
+            return new Expression("nthOfTypeMod", m, n || 0);
+        },
+        nthOfTypeOdd: function() {
+            var self = this;
+            return new Expression("nthOfTypeOdd");
+        },
+        nthOfTypeEven: function() {
+            var self = this;
+            return new Expression("nthOfTypeEven");
+        },
+        nthLastOfTypeMod: function(m, n) {
+            var self = this;
+            return new Expression("nthLastOfTypeMod", m, n || 0);
+        },
+        nthLastOfTypeOdd: function() {
+            var self = this;
+            return new Expression("nthLastOfTypeOdd");
+        },
+        nthLastOfTypeEven: function() {
+            var self = this;
+            return new Expression("nthLastOfTypeEven");
+        },
         empty: function() {
             var self = this;
             return new Expression("empty");

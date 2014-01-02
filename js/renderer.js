@@ -24,6 +24,8 @@
                 });
             } else if (typeof argument === "string") {
                 return self.stringLiteral(argument);
+            } else if (typeof argument === "number") {
+                return argument;
             } else if (argument.isLiteral) {
                 return argument.value;
             } else {
@@ -226,11 +228,47 @@
             var self = this;
             return "position() = " + n;
         },
+        nthOfTypeMod: function(m, n) {
+            var self = this;
+            if (m === -1) {
+                return "(position() <= " + n + ") and (((position() - " + n + ") mod 1) = 0)";
+            } else if (n > 0) {
+                return "(position() >= " + n + ") and (((position() - " + n + ") mod " + m + ") = 0)";
+            } else {
+                return "(position() mod " + m + ") = 0";
+            }
+        },
+        nthOfTypeOdd: function() {
+            var self = this;
+            return "(position() mod 2) = 1";
+        },
+        nthOfTypeEven: function() {
+            var self = this;
+            return "(position() mod 2) = 0";
+        },
         nthLastOfType: function(n) {
             var self = this;
             return "position() = last() - " + (n - 1);
         },
-        lastOfType: function(n) {
+        nthLastOfTypeMod: function(m, n) {
+            var self = this;
+            if (m === -1) {
+                return "((last() - position() + 1) <= " + n + ") and ((((last() - position() + 1) - " + n + ") mod 1) = 0)";
+            } else if (n > 0) {
+                return "((last() - position() + 1) >= " + n + ") and ((((last() - position() + 1) - " + n + ") mod " + m + ") = 0)";
+            } else {
+                return "((last() - position() + 1) mod " + m + ") = 0";
+            }
+        },
+        nthLastOfTypeOdd: function() {
+            var self = this;
+            return "((last() - position() + 1) >= 1) and ((((last() - position() + 1) - 1) mod 2) = 0)";
+        },
+        nthLastOfTypeEven: function() {
+            var self = this;
+            return "((last() - position() + 1) mod 2) = 0";
+        },
+        lastOfType: function() {
             var self = this;
             return "position() = last()";
         },

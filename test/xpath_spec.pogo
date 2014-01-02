@@ -209,7 +209,7 @@ describe 'dsl'
 
     describe '.text()'
 
-        it "selects a node's text"
+        it "finds a node's text"
             results = select(dsl.descendant('p').where(dsl.text().equals 'Bax'))
             results.0.text().should.equal 'Bax'
             results.1.attr('title').should.equal 'monkey'
@@ -220,13 +220,13 @@ describe 'dsl'
 
         describe "when called with one argument"
 
-            it "selects the part of a string after the specified character"
+            it "finds the part of a string after the specified character"
                 results = select(dsl.descendant('span').where(dsl.attr('id').equals "substring").text().substring(7))
                 results.should.equal "there"
 
         describe "when called with two arguments"
 
-            it "selects the part of a string after the specified character, up to the given length"
+            it "finds the part of a string after the specified character, up to the given length"
                 results = select(dsl.descendant('span').where(dsl.attr('id').equals "substring").text().substring(2, 4))
                 results.should.equal "ello"
 
@@ -328,28 +328,116 @@ describe 'dsl'
 
     describe '.firstOfType()'
 
-        it "selects the first element of the given type"
+        it "finds the first element of the given type"
             first p = select(dsl.descendant('p').where(dsl.firstOfType()))
             first p.0.attr('id').should.equal 'fooDiv'
 
     describe '.lastOfType()'
 
-        it "selects the last element of the given type"
+        it "finds the last element of the given type"
             first p = select(dsl.descendant('p').where(dsl.lastOfType()))
             first p.0.attr('id').should.equal 'amingoflay'
 
     describe '.nthOfType()'
 
-        it "selects the nth element of the given type"
+        it "finds the nth element of the given type"
             nth = select(dsl.descendant('div').where(dsl.nthOfType(4)))
             nth.length.should.equal 1
             nth.0.attr('id').should.equal 'woo'
 
     describe '.nthLastOfType()'
 
-        it "selects the nth last element of the given type"
+        it "finds the nth last element of the given type"
             second last p = select(dsl.descendant('p').where(dsl.nthLastOfType(2)))
             second last p.0.attr('id').should.equal 'impchay'
+
+    describe '.nthOfTypeMod()'
+
+        it "finds elements where (position - 0) mod 1 is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthOfTypeMod(1, 0)))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.length.should.equal 8
+
+        it "finds elements where position >= 3 and (position - 3) mod 1 is 0"
+            nth = select(dsl.descendant('body').child('div').where(dsl.nthOfTypeMod(1, 3)))
+            nth.0.attr('title').should.equal 'fooDiv'
+            nth.length.should.equal 5
+
+        it "finds elements where (position - 2) mod 1 is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthOfTypeMod(1, 2)))
+            nth.0.attr('title').should.equal 'noId'
+            nth.length.should.equal 7
+
+        it "finds elements where position mod 2 is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthOfTypeMod(2)))
+            nth.0.attr('title').should.equal 'noId'
+            nth.length.should.equal 4
+
+        it "finds elements where position <= 3 and (position - 3 mod 2) is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthOfTypeMod(-1, 3)))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.1.attr('title').should.equal 'noId'
+            nth.2.attr('title').should.equal 'fooDiv'
+            nth.length.should.equal 3
+
+    describe '.nthOfTypeOdd()'
+
+        it "finds elements where position is an odd number"
+            nth = select(dsl.descendant('div').where(dsl.nthOfTypeOdd()))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.length.should.equal 4
+
+    describe '.nthOfTypeEven()'
+
+        it "finds elements where position is an even number"
+            nth = select(dsl.descendant('div').where(dsl.nthOfTypeEven()))
+            nth.0.attr('title').should.equal 'noId'
+            nth.length.should.equal 4
+
+    describe '.nthLastOfTypeMod()'
+
+        it "finds elements where (last - position + 1) mod 1 is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthLastOfTypeMod(1, 0)))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.length.should.equal 8
+
+        it "finds elements where (last()-position()+1) >= 3) and ((((last()-position()+1)-3) mod 1) is 0"
+            nth = select(dsl.descendant('body').child('div').where(dsl.nthLastOfTypeMod(1, 3)))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.4.attr('title').should.equal 'bazDiv'
+            nth.length.should.equal 5
+
+        it "finds elements where (last()-position()+1) >= 2) and ((((last()-position()+1)-2) mod 1) is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthLastOfTypeMod(1, 2)))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.6.attr('id').should.equal 'moar'
+            nth.length.should.equal 7
+
+        it "finds elements where (last()-position()+1) mod 2) is 0"
+            nth = select(dsl.descendant('div').where(dsl.nthLastOfTypeMod(2)))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.3.attr('id').should.equal 'moar'
+            nth.length.should.equal 4
+
+        it "finds elements where (last()-position()+1) <= 3) and ((((last()-position()+1)-3) mod 1) = 0"
+            nth = select(dsl.descendant('div').where(dsl.nthLastOfTypeMod(-1, 3)))
+            nth.0.attr('id').should.equal 'preference'
+            nth.length.should.equal 3
+
+    describe '.nthLastOfTypeOdd()'
+
+        it "finds elements where position is an odd number, counting backwards from the end"
+            nth = select(dsl.descendant('div').where(dsl.nthLastOfTypeOdd()))
+            nth.3.attr('id').should.equal 'elephantay'
+            nth.length.should.equal 4
+
+    describe '.nthLastOfTypeEven()'
+
+        it "finds elements where position is an even number, counting backwards from the end"
+            nth = select(dsl.descendant('div').where(dsl.nthLastOfTypeEven()))
+            nth.0.attr('title').should.equal 'barDiv'
+            nth.3.attr('id').should.equal 'moar'
+            nth.length.should.equal 4
 
     describe '.empty()'
 
