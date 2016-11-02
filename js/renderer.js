@@ -18,7 +18,7 @@
             var self = this;
             if (argument.isExpression || argument.isUnion) {
                 return self.render(argument);
-            } else if (argument instanceof Array) {
+            } else if (Array.isArray(argument)) {
                 return argument.map(function(e) {
                     return self.convertArgument(e);
                 });
